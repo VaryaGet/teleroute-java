@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -12,7 +12,7 @@
   <name>eleroute-telegrambots</name>
   <properties>
     <logging.version>2.22.1</logging.version>
-    <telegrambots.version>9.1.0</telegrambots.version>
+    <telegrambots.version>9.2.0</telegrambots.version>
   </properties>
   <dependencies>
     <dependency>
@@ -21,10 +21,25 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.cactoos</groupId>
+      <artifactId>cactoos</artifactId>
+      <version>0.57.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.telegram</groupId>
+      <artifactId>telegrambots-longpolling</artifactId>
+      <version>${telegrambots.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.telegram</groupId>
       <artifactId>telegrambots-meta</artifactId>
       <version>${telegrambots.version}</version>
-      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.telegram</groupId>
+      <artifactId>telegrambots-client</artifactId>
+      <version>${telegrambots.version}</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
