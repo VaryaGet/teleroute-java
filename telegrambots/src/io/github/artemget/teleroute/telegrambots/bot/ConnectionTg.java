@@ -39,6 +39,9 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
  * Telegram Bot Connection.
  *
  * @since 2.0.0
+ * @todo #41:30min After release jdk 26 change IOException to Exception
+ *    for AutoCloseable interface see
+ *    <a href="https://bugs.openjdk.org/browse/JDK-8155591">SDK bug</a>
  */
 public final class ConnectionTg implements Connection, AutoCloseable {
     /**
@@ -88,10 +91,6 @@ public final class ConnectionTg implements Connection, AutoCloseable {
         this.application.registerBot(this.token, this.consumer);
     }
 
-    /*
-     * TODO after release jdk 26 change IOException to Exception
-     *  https://bugs.openjdk.org/browse/JDK-8155591
-     */
     @Override
     public void close() throws IOException {
         new CheckedProc<>(
