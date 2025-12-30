@@ -43,7 +43,7 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
  *    for AutoCloseable interface, see
  *    <a href="https://bugs.openjdk.org/browse/JDK-8155591">SDK bug</a>
  */
-public final class ConnectionTg implements Connection, AutoCloseable {
+public final class ConnectionTg implements Connection {
     /**
      * Bot token.
      */

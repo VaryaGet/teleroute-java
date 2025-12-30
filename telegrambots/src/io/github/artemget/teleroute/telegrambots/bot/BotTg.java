@@ -42,9 +42,7 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
  * Telegram consumer template.
  *
  * @since 2.0.0
- * @checkstyle IllegalCatchCheck (85 lines)
  */
-@SuppressWarnings("PMD.AvoidCatchingGenericException")
 public final class BotTg implements LongPollingSingleThreadUpdateConsumer {
     /**
      * Logger.
@@ -78,6 +76,8 @@ public final class BotTg implements LongPollingSingleThreadUpdateConsumer {
         this.bot = bot;
     }
 
+    //@checkstyle IllegalCatchCheck (8 lines)
+    @SuppressWarnings("PMD.AvoidCatchingGenericException")
     @Override
     public void consume(final Update update) {
         try {
