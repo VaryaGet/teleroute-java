@@ -40,7 +40,7 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
  *
  * @since 2.0.0
  * @todo #41:30min After release jdk 26 change IOException to Exception
- *    for AutoCloseable interface see
+ *    for AutoCloseable interface, see
  *    <a href="https://bugs.openjdk.org/browse/JDK-8155591">SDK bug</a>
  */
 public final class ConnectionTg implements Connection, AutoCloseable {
@@ -87,7 +87,7 @@ public final class ConnectionTg implements Connection, AutoCloseable {
     }
 
     @Override
-    public void connect() throws Exception {
+    public void open() throws Exception {
         this.application.registerBot(this.token, this.consumer);
     }
 

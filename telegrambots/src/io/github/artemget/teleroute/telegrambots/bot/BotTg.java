@@ -30,8 +30,9 @@ import io.github.artemget.teleroute.route.Route;
 import io.github.artemget.teleroute.route.RouteDfs;
 import io.github.artemget.teleroute.telegrambots.update.TgBotWrap;
 import io.github.artemget.teleroute.update.Wrap;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.cactoos.Proc;
-import org.cactoos.proc.UncheckedProc;
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;
 import org.telegram.telegrambots.longpolling.util.LongPollingSingleThreadUpdateConsumer;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -41,8 +42,15 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
  * Telegram consumer template.
  *
  * @since 2.0.0
+ * @checkstyle IllegalCatchCheck (85 lines)
  */
+@SuppressWarnings("PMD.AvoidCatchingGenericException")
 public final class BotTg implements LongPollingSingleThreadUpdateConsumer {
+    /**
+     * Logger.
+     */
+    private static final Logger LOGGER = LogManager.getLogger();
+
     /**
      * Procedure for telegram update handling.
      */
@@ -72,6 +80,10 @@ public final class BotTg implements LongPollingSingleThreadUpdateConsumer {
 
     @Override
     public void consume(final Update update) {
-        new UncheckedProc<>((Update u) -> this.bot.exec(new TgBotWrap(u))).exec(update);
+        try {
+            this.bot.exec(new TgBotWrap(update));
+        } catch (final Exception exception) {
+            LOGGER.error("Error occurred while processing update {}", update, exception);
+        }
     }
 }

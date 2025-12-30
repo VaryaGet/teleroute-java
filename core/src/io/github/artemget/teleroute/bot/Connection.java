@@ -25,14 +25,18 @@
 
 package io.github.artemget.teleroute.bot;
 
+import java.io.IOException;
+
 /**
  * Creates connection to the bot platform.
  *
  * @since 2.0.0
  */
-public interface Connection {
+public interface Connection extends AutoCloseable {
     /**
      * Connects to the bot platform.
      */
-    void connect() throws Exception;
+    void open() throws Exception;
+
+    void close() throws IOException;
 }
